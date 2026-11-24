@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portafolio de Ronal Esteban Figueroa Mora, ingeniero de sistemas en Pasto, Colombia. Proyectos de ciberseguridad, web y comunicación digital.">
+  <meta name="theme-color" content="#111611">
+  <title>Ronal Estudio · Ingeniería de sistemas</title>
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="site-header" id="inicio">
+    <nav class="shell nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="Ronal Estudio, inicio"><span class="monogram" aria-hidden="true">R.</span> Ronal Estudio</a>
+      <div class="nav-links">
+        <a href="#proyectos">Proyectos</a>
+        <a href="#perfil">Perfil</a>
+      </div>
+      <a class="nav-contact" href="#contacto">Contacto <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <picture class="hero-photo">
+        <source media="(max-width: 650px)" srcset="./assets/narino-mobile.webp">
+        <img src="./assets/narino.webp" width="1600" height="681" alt="" fetchpriority="high">
+      </picture>
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow hero-name">Ronal Esteban Figueroa Mora</p>
+          <h1 id="hero-title">Ingeniería<br>con <em>propósito.</em></h1>
+          <p class="hero-lede">Trabajo con plataformas web, sistemas de información y comunicación digital. Actualmente curso una maestría en Ciberseguridad.</p>
+          <a class="button button-light" href="#proyectos">Explorar proyectos <span aria-hidden="true">↘</span></a>
+        </div>
+        <p class="hero-location"><span aria-hidden="true"></span> Pasto, Nariño · Colombia</p>
+      </div>
+    </section>
+
+    <section class="section shell" id="proyectos" aria-labelledby="project-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow section-label">Portafolio</p>
+          <h2 id="project-title">Proyectos seleccionados</h2>
+        </div>
+        <p>Laboratorios de la maestría y experiencias en el sector público y universitario.</p>
+      </div>
+      <div class="filters" aria-label="Filtrar proyectos" role="group" hidden>
+        <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
+        <button type="button" data-filter="seguridad" aria-pressed="false">Ciberseguridad</button>
+        <button type="button" data-filter="web" aria-pressed="false">Web y plataformas</button>
+        <button type="button" data-filter="comunicacion" aria-pressed="false">Comunicación digital</button>
+      </div>
+      <p id="resultados" class="sr-only" role="status"></p>
+
+      <div class="cards">
+        <article class="project" data-categories="seguridad">
+          <button class="project-button" type="button" aria-labelledby="luks-title" aria-haspopup="dialog" disabled>
+            <img src="./assets/seguridad.webp" width="510" height="680" alt="" loading="lazy">
+            <div class="card-content">
+              <span class="eyebrow">Ciberseguridad · Laboratorio</span>
+              <h3 id="luks-title">Cifrado de discos con LUKS</h3>
+              <p>Protección de datos en Ubuntu con un disco virtual cifrado.</p>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </button>
+          <template>
+            <p>En la maestría preparé un laboratorio para proteger un disco adicional en una máquina virtual Ubuntu. Usé <code>cryptsetup</code> para crear el contenedor LUKS y documenté la identificación del disco, la cabecera de cifrado y el UUID.</p>
+            <dl><dt>Herramientas</dt><dd>Ubuntu, VirtualBox, LUKS y cryptsetup.</dd><dt>Contexto</dt><dd>Práctica académica de la Maestría en Ciberseguridad.</dd></dl>
+          </template>
+        </article>
+
+        <article class="project project-web" data-categories="web comunicacion">
+          <button class="project-button" type="button" aria-labelledby="portal-title" aria-haspopup="dialog" disabled>
+            <img src="./assets/web.webp" width="510" height="680" alt="" loading="lazy">
+            <div class="card-content">
+              <span class="eyebrow">Web · Sector público</span>
+              <h3 id="portal-title">Gestión digital en El Peñol</h3>
+              <p>Portales y contenidos para acercar la información pública a la comunidad.</p>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </button>
+          <template>
+            <p>Apoyé la gestión de sistemas de información de la Administración Municipal de El Peñol, Nariño. Trabajé con el sitio web municipal y el portal de Gobierno en Línea para difundir información institucional y facilitar su consulta por parte de la comunidad.</p>
+            <dl><dt>Mi aporte</dt><dd>Gestión de plataformas, producción audiovisual y socialización de información institucional.</dd><dt>Periodo</dt><dd>Junio a diciembre de 2025.</dd></dl>
+          </template>
+        </article>
+
+        <article class="project project-media" data-categories="web comunicacion">
+          <button class="project-button" type="button" aria-labelledby="universidad-title" aria-haspopup="dialog" disabled>
+            <img src="./assets/comunicacion.webp" width="510" height="680" alt="" loading="lazy">
+            <div class="card-content">
+              <span class="eyebrow">Comunicación digital · Práctica</span>
+              <h3 id="universidad-title">Web y contenidos universitarios</h3>
+              <p>Administración web y presencia digital en la Universidad Pablo de Olavide.</p>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </button>
+          <template>
+            <p>Durante mi práctica en la Universidad Pablo de Olavide, en convenio con la Universidad Mariana, apoyé la administración y programación del sitio web y participé en actividades de marketing y gestión de contenidos digitales.</p>
+            <dl><dt>Mi aporte</dt><dd>Administración web, apoyo a redes sociales y contenidos institucionales.</dd><dt>Periodo</dt><dd>Febrero a agosto de 2023.</dd></dl>
+          </template>
+        </article>
+      </div>
+    </section>
+
+    <section class="profile" id="perfil" aria-labelledby="profile-title">
+      <div class="shell profile-layout">
+        <div>
+          <p class="eyebrow section-label">Perfil</p>
+          <h2 id="profile-title">Soy Ronal<br>Figueroa.</h2>
+          <p>Ingeniero de sistemas de la Universidad Mariana. He trabajado con plataformas del sector público, administrado contenidos web y enseñado marketing digital. Hoy sigo formándome en ciberseguridad en la Universidad Europea.</p>
+        </div>
+        <dl class="timeline">
+          <div><dt>Ciberseguridad</dt><dd>Maestría en curso · Universidad Europea</dd></div>
+          <div><dt>Ingeniería de Sistemas</dt><dd>Universidad Mariana · 2024</dd></div>
+          <div><dt>Docencia universitaria</dt><dd>Marketing digital y negocios por internet · Universidad Mariana</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="shell contact" id="contacto" aria-labelledby="contact-title">
+      <div>
+        <p class="eyebrow section-label">Contacto</p>
+        <h2 id="contact-title">¿Hablamos?</h2>
+        <p>Puedes encontrarme en GitHub y explorar el código de este portafolio.</p>
+      </div>
+      <div class="contact-links">
+        <a class="button button-dark" href="https://github.com/ronal728">Mi perfil en GitHub <span aria-hidden="true">↗</span></a>
+        <a class="code-link" href="https://github.com/ronal728/paginaWeb">Ver el código del sitio <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="shell footer-inner"><span>Ronal Estudio · Pasto, Colombia</span><a href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a></div></footer>
+
+  <aside class="music" aria-label="Música">
+    <section class="music-panel" id="music-panel" aria-labelledby="music-title" inert>
+      <div class="panel-heading">
+        <div><p class="eyebrow section-label">Spotify</p><h2 id="music-title">lofi beats</h2></div>
+        <button class="icon-button" id="music-close" type="button" aria-label="Minimizar reproductor">×</button>
+      </div>
+      <div id="player"></div>
+      <a class="spotify-link" href="https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn" target="_blank" rel="noopener noreferrer">Abrir en Spotify <span aria-hidden="true">↗</span></a>
+    </section>
+    <button class="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" hidden><span class="music-note" aria-hidden="true">♫</span><span>Música</span></button>
+    <noscript><a class="music-toggle" href="https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn">♫ Música en Spotify</a></noscript>
+  </aside>
+
+  <dialog id="project-dialog" aria-labelledby="detail-title">
+    <form method="dialog"><button class="icon-button dialog-close" aria-label="Cerrar proyecto" autofocus>×</button></form>
+    <p class="eyebrow section-label" id="detail-category"></p>
+    <h2 id="detail-title"></h2>
+    <div id="detail-body"></div>
+  </dialog>
+</body>
+</html>
