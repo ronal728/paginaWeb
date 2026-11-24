@@ -92,8 +92,8 @@ h2 { margin-bottom: 0; font: 500 clamp(2.8rem, 5vw, 5rem)/.98 Georgia, serif; le
 
 .music { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 12; }
 .music-toggle { display: flex; align-items: center; gap: 7px; min-height: 46px; margin-left: auto; padding: 7px 13px 7px 8px; border-radius: 40px; font-size: .87rem; text-decoration: none; }
-.music-toggle[aria-expanded="true"] .music-note { background: #f2ffd1; }
-.music-note { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: var(--lime); color: var(--dark); font-size: 1.05rem; }
+.music-toggle[aria-expanded="true"] .music-note { background: #e8fbff; }
+.music-note { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #91e6ff; color: #071b28; font-size: 1.05rem; }
 .music-panel { position: absolute; right: 0; bottom: calc(100% + 9px); width: min(345px, 100vw - 36px); max-height: calc(100dvh - 95px); overflow: auto; padding: 16px; border: 1px solid #c8cfbd; border-radius: 20px; background: var(--paper); box-shadow: 0 10px 42px #111a1640; visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s, visibility .2s; }
 .music-panel.is-open { visibility: visible; opacity: 1; transform: none; }
 .panel-heading { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 11px; }
@@ -114,38 +114,44 @@ dialog dt { font-weight: 750; }
 dialog dd { margin: 3px 0 12px; color: var(--muted); }
 
 
-/* Keep the label legible over the blurred background. */
+/* The bright rim and cursor reflection stay visible across light and dark surfaces. */
 :is(.button, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) {
-  --glass-tint: #f1f7e1cf;
-  --glass-rim: #57684580;
-  --glass-highlight: #ffffffe0;
-  --glass-reflection: #fffffff0;
-  --glass-rest-reflection: #ffffff54;
-  color: #10140e;
+  --glass-tint: #65d6fbbd;
+  --glass-rim: #087aabc4;
+  --glass-highlight: #ecfbfff5;
+  --glass-reflection: #f8fdff;
+  --glass-rest-reflection: #eafaff78;
+  --glass-halo: #099fd655;
+  color: #061722;
   font-weight: 750;
   border: 1px solid var(--glass-rim);
   background:
-    radial-gradient(ellipse at var(--glass-x, 50%) var(--glass-y, 8%), var(--glass-rest-reflection), transparent 68%),
-    linear-gradient(170deg, #ffffff24, transparent 56%),
+    radial-gradient(ellipse 62% 115% at var(--glass-x, 33%) var(--glass-y, 0%), var(--glass-rest-reflection) 0%, #c7f2ff56 42%, transparent 80%),
+    linear-gradient(180deg, #effcff94 0%, #b4eeff24 46%, transparent 62%, #008bca42 100%),
     var(--glass-tint);
-  box-shadow: inset 0 1px 1px var(--glass-highlight), inset 0 -1px 3px #0a140c26, 0 4px 12px #141c1624;
-  -webkit-backdrop-filter: blur(16px) saturate(145%);
-  backdrop-filter: blur(16px) saturate(145%);
+  box-shadow:
+    inset 0 2px 2px var(--glass-highlight),
+    inset 0 -2px 4px #007db991,
+    inset 1px 0 2px #def8ff9c,
+    0 1px 1px #003c5e54,
+    0 5px 15px var(--glass-halo);
+  -webkit-backdrop-filter: blur(19px) saturate(170%);
+  backdrop-filter: blur(19px) saturate(170%);
   transition: transform .25s cubic-bezier(.2, .65, .36, 1), box-shadow .25s, border-color .25s;
 }
 
-/* The greener tint also shows which filter or player control is active. */
 :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) {
-  --glass-rim: #516d2c;
-  --glass-tint: #d5eca7e5;
-  box-shadow: inset 0 0 0 1px #516d2c80, inset 0 1px 2px #ffffffbd, 0 4px 12px #141c1624;
+  --glass-rim: #075b87;
+  --glass-tint: #39c9f3e3;
+  --glass-halo: #008bcb82;
 }
 
 @media (hover: hover) {
   :is(.button, .nav-contact, .filters button, .music-toggle, .icon-button):hover,
   .project-button:not(:disabled):hover .card-arrow {
     --glass-rest-reflection: var(--glass-reflection);
-    transform: translateY(-2px);
+    --glass-halo: #00aeefb0;
+    transform: translateY(-3px);
   }
 }
 
@@ -156,8 +162,8 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  :is(.button, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #eef3e4; }
-  :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) { --glass-tint: #d5eca7; }
+  :is(.button, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #93e3fb; }
+  :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) { --glass-tint: #58d1f5; }
 }
 
 @media (max-width: 930px) {
