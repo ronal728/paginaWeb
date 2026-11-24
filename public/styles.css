@@ -30,9 +30,9 @@ section[id] { scroll-margin-top: 90px; }
 .nav a { display: inline-flex; align-items: center; text-decoration: none; min-height: 44px; }
 .brand { gap: 11px; font-weight: 700; letter-spacing: -.02em; width: max-content; }
 .monogram { display: grid; place-items: center; width: 33px; height: 33px; border-radius: 9px; color: var(--dark); background: var(--lime); font: bold 22px Georgia, serif; }
-.nav-links { display: flex; gap: 33px; color: #e0e4d6; font-size: .88rem; }
-.nav-links a:hover { color: var(--lime); }
-.nav-contact { justify-self: end; gap: 9px; padding-inline: 13px; border-radius: 40px; font-size: .88rem; font-weight: 700; }
+.nav-links { display: flex; gap: 9px; }
+:is(.nav-links a, .nav-contact) { justify-content: center; padding-inline: 13px; border-radius: 40px; font-size: .88rem; }
+.nav-contact { justify-self: end; gap: 9px; }
 
 .hero { position: relative; isolation: isolate; color: #fffef6; background: #272f23; }
 .hero-photo, .hero-photo img, .hero::after { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -115,7 +115,7 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 
 
 /* The bright rim and cursor reflection stay visible across light and dark surfaces. */
-:is(.button, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) {
+:is(.button, .nav-links a, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) {
   --glass-tint: #65d6fbbd;
   --glass-rim: #087aabc4;
   --glass-highlight: #ecfbfff5;
@@ -147,7 +147,7 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 
 @media (hover: hover) {
-  :is(.button, .nav-contact, .filters button, .music-toggle, .icon-button):hover,
+  :is(.button, .nav-links a, .nav-contact, .filters button, .music-toggle, .icon-button):hover,
   .project-button:not(:disabled):hover .card-arrow {
     --glass-rest-reflection: var(--glass-reflection);
     --glass-halo: #00aeefb0;
@@ -155,14 +155,14 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
   }
 }
 
-:is(.button, .nav-contact, .filters button, .music-toggle, .icon-button):active,
+:is(.button, .nav-links a, .nav-contact, .filters button, .music-toggle, .icon-button):active,
 .project-button:not(:disabled):active .card-arrow {
   --glass-rest-reflection: var(--glass-reflection);
   transform: scale(.96);
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  :is(.button, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #93e3fb; }
+  :is(.button, .nav-links a, .nav-contact, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #93e3fb; }
   :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) { --glass-tint: #58d1f5; }
 }
 
@@ -173,11 +173,11 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 @media (max-width: 650px) {
   :root { --shell: calc(100% - 36px); }
-  .nav { min-height: 60px; gap: 9px; grid-template-columns: 1fr auto auto; }
+  .nav { width: calc(100% - 20px); min-height: 60px; gap: 6px; grid-template-columns: 1fr auto auto; }
   .brand { gap: 6px; font-size: .82rem; }
   .monogram { width: 26px; height: 26px; font-size: 17px; border-radius: 6px; }
-  .nav-links { gap: 12px; font-size: .77rem; }
-  .nav-contact { font-size: .77rem; gap: 3px; padding-inline: 8px; }
+  .nav-links { gap: 4px; }
+  :is(.nav-links a, .nav-contact) { font-size: .77rem; padding-inline: 7px; }
   .nav-contact span { display: none; }
   .hero-layout { min-height: min(690px, 105svh); padding-block: 66px 105px; }
   .hero::after { background: linear-gradient(90deg, #0b120dc7, #0d160e5e), linear-gradient(0deg, #1017119c, transparent 57%); }
@@ -196,5 +196,5 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
-  :is(.button, .nav-contact, .filters button, .music-toggle, .icon-button, .card-arrow) { transform: none !important; }
+  :is(.button, .nav-links a, .nav-contact, .filters button, .music-toggle, .icon-button, .card-arrow) { transform: none !important; }
 }
