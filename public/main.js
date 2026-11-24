@@ -76,3 +76,36 @@ musicClose.addEventListener("click", () => setMusicOpen(false));
 music.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !musicPanel.inert) setMusicOpen(false);
 });
+
+const glassButtons = document.querySelectorAll(
+  ".button, .nav-contact, .filters button, .music-toggle, .icon-button, .project-button"
+);
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+for (const control of glassButtons) {
+  const surface = control.querySelector(".card-arrow") ?? control;
+
+  function positionReflection(event) {
+    if (reducedMotion.matches) return;
+
+    const bounds = surface.getBoundingClientRect();
+    if (!bounds.width || !bounds.height) return;
+
+    const x = Math.max(0, Math.min(100, (event.clientX - bounds.left) / bounds.width * 100));
+    const y = Math.max(0, Math.min(100, (event.clientY - bounds.top) / bounds.height * 100));
+    surface.style.setProperty("--glass-x", `${Math.round(x)}%`);
+    surface.style.setProperty("--glass-y", `${Math.round(y)}%`);
+  }
+
+  function resetReflection() {
+    surface.style.removeProperty("--glass-x");
+    surface.style.removeProperty("--glass-y");
+  }
+
+  control.addEventListener("pointermove", (event) => {
+    if (event.pointerType !== "touch") positionReflection(event);
+  }, { passive: true });
+  control.addEventListener("pointerdown", positionReflection);
+  control.addEventListener("pointerleave", resetReflection);
+  control.addEventListener("pointercancel", resetReflection);
+}
