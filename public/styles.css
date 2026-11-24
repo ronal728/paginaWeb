@@ -134,8 +134,8 @@ h2 { margin-bottom: 0; font: 500 clamp(2.8rem, 5vw, 5rem)/.98 Georgia, serif; le
 
 .music { position: fixed; right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom)); z-index: 12; }
 .music-toggle { display: flex; align-items: center; gap: 7px; min-height: 46px; margin-left: auto; padding: 7px 13px 7px 8px; border-radius: 40px; font-size: .87rem; text-decoration: none; }
-.music-toggle[aria-expanded="true"] .music-note { background: #e8fbff; }
-.music-note { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #91e6ff; color: #071b28; font-size: 1.05rem; }
+.music-toggle[aria-expanded="true"] .music-note { background: #ffd1c8; }
+.music-note { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 50%; background: #ffb2a3; color: #23070c; font-size: 1.05rem; }
 .music-panel { position: absolute; right: 0; bottom: calc(100% + 9px); width: min(345px, 100vw - 36px); max-height: calc(100dvh - 95px); overflow: auto; padding: 16px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); box-shadow: 0 10px 42px #111a1640; visibility: hidden; opacity: 0; transform: translateY(8px); transition: opacity .2s, transform .2s, visibility .2s; }
 .music-panel.is-open { visibility: visible; opacity: 1; transform: none; }
 .panel-heading { display: flex; justify-content: space-between; align-items: start; gap: 10px; margin-bottom: 11px; }
@@ -158,24 +158,24 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 
 /* The bright rim and cursor reflection stay visible across light and dark surfaces. */
 :is(.button, .filters button, .card-arrow, .music-toggle, .icon-button) {
-  --glass-tint: #65d6fbbd;
-  --glass-rim: #087aabc4;
-  --glass-highlight: #ecfbfff5;
-  --glass-reflection: #f8fdff;
-  --glass-rest-reflection: #eafaff78;
-  --glass-halo: #099fd655;
-  color: #061722;
+  --glass-tint: #ff7771e8;
+  --glass-rim: #a91e37;
+  --glass-highlight: #ffe0d4f5;
+  --glass-reflection: #fff0e8;
+  --glass-rest-reflection: #ffb8a48a;
+  --glass-halo: #e62b4c60;
+  color: #23070c;
   font-weight: 750;
   border: 1px solid var(--glass-rim);
   background:
-    radial-gradient(ellipse 62% 115% at var(--glass-x, 33%) var(--glass-y, 0%), var(--glass-rest-reflection) 0%, #c7f2ff56 42%, transparent 80%),
-    linear-gradient(180deg, #effcff94 0%, #b4eeff24 46%, transparent 62%, #008bca42 100%),
+    radial-gradient(ellipse 62% 115% at var(--glass-x, 33%) var(--glass-y, 0%), var(--glass-rest-reflection) 0%, #ff927e66 42%, transparent 80%),
+    linear-gradient(180deg, #ffe1cf9e 0%, #ff9e8226 46%, transparent 62%, #a9182e33 100%),
     var(--glass-tint);
   box-shadow:
     inset 0 2px 2px var(--glass-highlight),
-    inset 0 -2px 4px #007db991,
-    inset 1px 0 2px #def8ff9c,
-    0 1px 1px #003c5e54,
+    inset 0 -2px 4px #a0002291,
+    inset 1px 0 2px #ffd3c49c,
+    0 1px 1px #52081b70,
     0 5px 15px var(--glass-halo);
   -webkit-backdrop-filter: blur(19px) saturate(170%);
   backdrop-filter: blur(19px) saturate(170%);
@@ -183,16 +183,16 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 
 :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) {
-  --glass-rim: #075b87;
-  --glass-tint: #39c9f3e3;
-  --glass-halo: #008bcb82;
+  --glass-rim: #860f28;
+  --glass-tint: #ff6e65f2;
+  --glass-halo: #db174782;
 }
 
 @media (hover: hover) {
   :is(.button, .filters button, .music-toggle, .icon-button):hover,
   .project-button:not(:disabled):hover .card-arrow {
     --glass-rest-reflection: var(--glass-reflection);
-    --glass-halo: #00aeefb0;
+    --glass-halo: #ff345eb0;
     transform: translateY(-3px);
   }
 }
@@ -204,8 +204,8 @@ dialog dd { margin: 3px 0 12px; color: var(--muted); }
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  :is(.button, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #93e3fb; }
-  :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) { --glass-tint: #58d1f5; }
+  :is(.button, .filters button, .card-arrow, .music-toggle, .icon-button) { --glass-tint: #ff877d; }
+  :is(.filters button[aria-pressed="true"], .music-toggle[aria-expanded="true"]) { --glass-tint: #ff756b; }
 }
 
 @media (max-width: 930px) {
