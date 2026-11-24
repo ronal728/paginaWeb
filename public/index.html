@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portafolio de Ronal Esteban Figueroa Mora, ingeniero de sistemas en Pasto, Colombia. Proyectos de ciberseguridad, web y comunicación digital.">
-  <meta name="theme-color" content="#111611">
+  <meta name="theme-color" content="#090b10">
   <title>Ronal Estudio · Ingeniería de sistemas</title>
   <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
@@ -46,7 +46,7 @@
           <p class="eyebrow section-label">Portafolio</p>
           <h2 id="project-title">Proyectos seleccionados</h2>
         </div>
-        <p>Laboratorios de la maestría y experiencias en el sector público y universitario.</p>
+        <p>Aplicaciones, laboratorios de ciberseguridad y experiencias en el sector público y universitario.</p>
       </div>
       <div class="filters" aria-label="Filtrar proyectos" role="group" hidden>
         <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
@@ -57,6 +57,33 @@
       <p id="resultados" class="sr-only" role="status"></p>
 
       <div class="cards">
+        <article class="project project-featured" data-categories="web">
+          <button class="project-button" type="button" aria-labelledby="tareas-title" aria-haspopup="dialog" disabled>
+            <div class="task-illustration" aria-hidden="true">
+              <div class="task-preview">
+                <span class="task-preview-caption">Tu tarea en curso</span>
+                <strong>Pagar el recibo de la luz</strong>
+                <ol>
+                  <li>Tarea aceptada</li>
+                  <li>Pago realizado</li>
+                  <li>Comprobante enviado</li>
+                </ol>
+              </div>
+            </div>
+            <div class="card-content">
+              <span class="eyebrow">Aplicación · En desarrollo</span>
+              <h3 id="tareas-title">Tus Tareas Ya</h3>
+              <p>Una app para encargar diligencias desde el celular y seguir su avance.</p>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </button>
+          <template>
+            <p>Estoy desarrollando Tus Tareas Ya para que una persona pueda pedir ayuda con un pago, trámite o mandado. La idea es conectar a quien solicita la tarea con una persona verificada cercana y permitirle ver el avance hasta recibir el comprobante.</p>
+            <dl><dt>Etapa actual</dt><dd>Diseño de la landing y bocetos de la app en Figma.</dd></dl>
+            <a class="project-link" href="https://www.figma.com/design/muJqDWpbaJsbO7DOkj1ycY/Tus-Tareas-Ya-%E2%80%93-Landing?node-id=0-1" target="_blank" rel="noopener noreferrer">Ver el diseño en Figma <span aria-hidden="true">↗</span></a>
+          </template>
+        </article>
+
         <article class="project" data-categories="seguridad">
           <button class="project-button" type="button" aria-labelledby="luks-title" aria-haspopup="dialog" disabled>
             <img src="./assets/seguridad.webp" width="510" height="680" alt="" loading="lazy">
