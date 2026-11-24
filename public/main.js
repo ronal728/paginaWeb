@@ -78,7 +78,7 @@ music.addEventListener("keydown", (event) => {
 });
 
 const glassButtons = document.querySelectorAll(
-  ".button, .nav-contact, .filters button, .music-toggle, .icon-button, .project-button"
+  ".button, .nav-links a, .nav-contact, .filters button, .music-toggle, .icon-button, .project-button"
 );
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
