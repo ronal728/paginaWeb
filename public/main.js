@@ -1,3 +1,5 @@
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let pageAnimation;
 const projects = [...document.querySelectorAll(".project")];
 const pages = [...document.querySelectorAll("[data-page]")];
 const categories = {
@@ -8,6 +10,7 @@ const categories = {
 };
 
 function showPage() {
+  pageAnimation?.cancel();
   const route = location.hash.slice(1) || "inicio";
   if (route === "contenido") {
     document.querySelector("main").focus();
@@ -46,6 +49,9 @@ function showPage() {
   if (!pages.some(page => page.dataset.page === pageName)) pageName = "no-encontrada";
   for (const page of pages) page.hidden = page.dataset.page !== pageName;
   const activePage = pages.find(page => !page.hidden);
+  if (!reducedMotion.matches && activePage.animate) {
+    pageAnimation = activePage.animate([{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 360, easing: "cubic-bezier(.22,1,.36,1)" });
+  }
   const heading = activePage.querySelector("h1");
   title = heading.textContent.trim();
   document.title = title + " · Ronal Estudio";
@@ -99,7 +105,7 @@ music.addEventListener("keydown", (event) => {
 const glassButtons = document.querySelectorAll(
   ".button, .filters a, .music-toggle, .icon-button, .project-button"
 );
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
 
 for (const control of glassButtons) {
   const surface = control.querySelector(".card-arrow") ?? control;
