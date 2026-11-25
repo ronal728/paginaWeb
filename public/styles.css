@@ -336,3 +336,9 @@ h1[tabindex="-1"]:focus { outline: none; }
 #proyectos .section-heading { text-align: center; }
 #proyectos .section-heading > p { margin-inline: auto; }
 #proyectos .filters { justify-content: center; }
+
+/* Consistent centered project introductions. */
+#detail-title, #detail-category, #detail-summary { text-align: center; margin-inline: auto; }
+#detail-title { max-width: 20ch; text-wrap: balance; }
+#detail-summary { max-width: 62ch; }
+.project-link.button { color: #132c24; text-decoration: none; gap: 14px; padding: 14px 22px; margin-top: 16px; }
