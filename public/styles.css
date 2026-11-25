@@ -282,3 +282,5 @@ main { min-height: calc(100svh - 200px); }
 .button.back-link { display: inline-flex; color: #132c24; text-decoration: none; padding: 14px 22px; gap: 12px; }
 h1[tabindex="-1"]:focus { outline: none; }
 .contact-links .button { max-width: 100%; }
+
+.contact-icon { width: 26px; height: 26px; flex-shrink: 0; vertical-align: middle; }
