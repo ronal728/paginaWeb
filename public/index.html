@@ -23,8 +23,8 @@
     </nav>
   </header>
 
-  <main id="contenido">
-    <section class="hero" aria-labelledby="hero-title">
+  <main id="contenido" tabindex="-1">
+    <section data-page="inicio" class="hero" aria-labelledby="hero-title">
       <picture class="hero-photo">
         <source media="(max-width: 650px)" srcset="./assets/narino-mobile.webp">
         <img src="./assets/narino.webp" width="1600" height="681" alt="" fetchpriority="high">
@@ -40,25 +40,25 @@
       </div>
     </section>
 
-    <section class="section shell" id="proyectos" aria-labelledby="project-title">
+    <section class="section shell" data-page="proyectos" id="proyectos" aria-labelledby="project-title">
       <div class="section-heading">
         <div>
           <p class="eyebrow section-label">Portafolio</p>
-          <h2 id="project-title">Proyectos seleccionados</h2>
+          <h1 id="project-title">Proyectos</h1>
         </div>
         <p>Aplicaciones, laboratorios de ciberseguridad y experiencias en el sector público y universitario.</p>
       </div>
-      <div class="filters" aria-label="Filtrar proyectos" role="group" hidden>
-        <button type="button" data-filter="todos" aria-pressed="true">Todos</button>
-        <button type="button" data-filter="seguridad" aria-pressed="false">Ciberseguridad</button>
-        <button type="button" data-filter="web" aria-pressed="false">Web y plataformas</button>
-        <button type="button" data-filter="comunicacion" aria-pressed="false">Comunicación digital</button>
+      <div class="filters" aria-label="Filtrar proyectos" role="group">
+        <a href="#proyectos" data-filter="todos">Todos</a>
+        <a href="#ciberseguridad" data-filter="seguridad">Ciberseguridad</a>
+        <a href="#paginas-web" data-filter="web">Web y plataformas</a>
+        <a href="#comunicacion-digital" data-filter="comunicacion">Comunicación digital</a>
       </div>
       <p id="resultados" class="sr-only" role="status"></p>
 
       <div class="cards">
         <article class="project project-featured" data-categories="web">
-          <button class="project-button" type="button" aria-labelledby="tareas-title" aria-haspopup="dialog" disabled>
+          <a class="project-button" href="#proyecto/tus-tareas-ya" aria-labelledby="tareas-title" data-project="tus-tareas-ya">
             <div class="task-illustration" aria-hidden="true">
               <div class="task-preview">
                 <span class="task-preview-caption">Tu tarea en curso</span>
@@ -76,7 +76,7 @@
               <p>Una app para encargar diligencias desde el celular y seguir su avance.</p>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
-          </button>
+          </a>
           <template>
             <p>Estoy desarrollando Tus Tareas Ya para que una persona pueda pedir ayuda con un pago, trámite o mandado. La idea es conectar a quien solicita la tarea con una persona verificada cercana y permitirle ver el avance hasta recibir el comprobante.</p>
             <dl><dt>Etapa actual</dt><dd>Diseño de la landing y bocetos de la app en Figma.</dd></dl>
@@ -85,7 +85,7 @@
         </article>
 
         <article class="project" data-categories="seguridad">
-          <button class="project-button" type="button" aria-labelledby="luks-title" aria-haspopup="dialog" disabled>
+          <a class="project-button" href="#proyecto/cifrado-luks" aria-labelledby="luks-title" data-project="cifrado-luks">
             <img src="./assets/seguridad.webp" width="510" height="680" alt="" loading="lazy">
             <div class="card-content">
               <span class="eyebrow">Ciberseguridad · Laboratorio</span>
@@ -93,7 +93,7 @@
               <p>Protección de datos en Ubuntu con un disco virtual cifrado.</p>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
-          </button>
+          </a>
           <template>
             <p>En la maestría preparé un laboratorio para proteger un disco adicional en una máquina virtual Ubuntu. Usé <code>cryptsetup</code> para crear el contenedor LUKS y documenté la identificación del disco, la cabecera de cifrado y el UUID.</p>
             <dl><dt>Herramientas</dt><dd>Ubuntu, VirtualBox, LUKS y cryptsetup.</dd><dt>Contexto</dt><dd>Práctica académica de la Maestría en Ciberseguridad.</dd></dl>
@@ -101,7 +101,7 @@
         </article>
 
         <article class="project project-web" data-categories="web comunicacion">
-          <button class="project-button" type="button" aria-labelledby="portal-title" aria-haspopup="dialog" disabled>
+          <a class="project-button" href="#proyecto/gestion-digital" aria-labelledby="portal-title" data-project="gestion-digital">
             <img src="./assets/web.webp" width="510" height="680" alt="" loading="lazy">
             <div class="card-content">
               <span class="eyebrow">Web · Sector público</span>
@@ -109,7 +109,7 @@
               <p>Portales y contenidos para acercar la información pública a la comunidad.</p>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
-          </button>
+          </a>
           <template>
             <p>Apoyé la gestión de sistemas de información de la Administración Municipal de El Peñol, Nariño. Trabajé con el sitio web municipal y el portal de Gobierno en Línea para difundir información institucional y facilitar su consulta por parte de la comunidad.</p>
             <dl><dt>Mi aporte</dt><dd>Gestión de plataformas, producción audiovisual y socialización de información institucional.</dd><dt>Periodo</dt><dd>Junio a diciembre de 2025.</dd></dl>
@@ -117,7 +117,7 @@
         </article>
 
         <article class="project project-media" data-categories="web comunicacion">
-          <button class="project-button" type="button" aria-labelledby="universidad-title" aria-haspopup="dialog" disabled>
+          <a class="project-button" href="#proyecto/web-universitaria" aria-labelledby="universidad-title" data-project="web-universitaria">
             <img src="./assets/comunicacion.webp" width="510" height="680" alt="" loading="lazy">
             <div class="card-content">
               <span class="eyebrow">Comunicación digital · Práctica</span>
@@ -125,7 +125,7 @@
               <p>Administración web y presencia digital en la Universidad Pablo de Olavide.</p>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
-          </button>
+          </a>
           <template>
             <p>Durante mi práctica en la Universidad Pablo de Olavide, en convenio con la Universidad Mariana, apoyé la administración y programación del sitio web y participé en actividades de marketing y gestión de contenidos digitales.</p>
             <dl><dt>Mi aporte</dt><dd>Administración web, apoyo a redes sociales y contenidos institucionales.</dd><dt>Periodo</dt><dd>Febrero a agosto de 2023.</dd></dl>
@@ -134,11 +134,11 @@
       </div>
     </section>
 
-    <section class="profile" id="perfil" aria-labelledby="profile-title">
+    <section class="profile" data-page="perfil" id="perfil" aria-labelledby="profile-title">
       <div class="shell profile-layout">
         <div>
           <p class="eyebrow section-label">Perfil</p>
-          <h2 id="profile-title">Soy Ronal<br>Figueroa.</h2>
+          <h1 id="profile-title">Soy Ronal<br>Figueroa.</h1>
           <p>Ingeniero de sistemas de la Universidad Mariana. He trabajado con plataformas del sector público, administrado contenidos web y enseñado marketing digital. Hoy sigo formándome en ciberseguridad en la Universidad Europea.</p>
         </div>
         <dl class="timeline">
@@ -149,10 +149,10 @@
       </div>
     </section>
 
-    <section class="shell contact" id="contacto" aria-labelledby="contact-title">
+    <section class="shell contact" data-page="contacto" id="contacto" aria-labelledby="contact-title">
       <div>
         <p class="eyebrow section-label">Contacto</p>
-        <h2 id="contact-title">¿Hablamos?</h2>
+        <h1 id="contact-title">Contacto</h1>
         <p>Puedes encontrarme en GitHub y explorar el código de este portafolio.</p>
       </div>
       <div class="contact-links">
@@ -160,9 +160,24 @@
         <a class="code-link" href="https://github.com/ronal728/paginaWeb">Ver el código del sitio <span aria-hidden="true">↗</span></a>
       </div>
     </section>
+    <section class="shell detail-page" data-page="detalle" aria-labelledby="detail-title" hidden>
+      <a class="back-link" href="#proyectos">← Volver a proyectos</a>
+      <p class="eyebrow section-label" id="detail-category"></p>
+      <h1 id="detail-title"></h1>
+      <p class="page-lede" id="detail-summary"></p>
+      <div class="detail-layout">
+        <div id="detail-visual"></div>
+        <div id="detail-body"></div>
+      </div>
+    </section>
+    <section class="shell detail-page" data-page="no-encontrada" hidden>
+      <h1>Página no encontrada</h1>
+      <p class="page-lede">Elige una sección del menú para continuar.</p>
+      <a class="button" href="#inicio">Volver al inicio</a>
+    </section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-inner"><span>Ronal Estudio · Pasto, Colombia</span><a href="#inicio">Volver arriba <span aria-hidden="true">↑</span></a></div></footer>
+  <footer class="site-footer"><div class="shell footer-inner"><span>Ronal Estudio · Pasto, Colombia</span><a href="#inicio">Volver al inicio <span aria-hidden="true">↑</span></a></div></footer>
 
   <aside class="music" aria-label="Música">
     <section class="music-panel" id="music-panel" aria-labelledby="music-title" inert>
@@ -177,11 +192,6 @@
     <noscript><a class="music-toggle" href="https://open.spotify.com/playlist/37i9dQZF1DWWQRwui0ExPn">♫ Música en Spotify</a></noscript>
   </aside>
 
-  <dialog id="project-dialog" aria-labelledby="detail-title">
-    <form method="dialog"><button class="icon-button dialog-close" aria-label="Cerrar proyecto" autofocus>×</button></form>
-    <p class="eyebrow section-label" id="detail-category"></p>
-    <h2 id="detail-title"></h2>
-    <div id="detail-body"></div>
-  </dialog>
+
 </body>
 </html>

@@ -1,48 +1,67 @@
 const projects = [...document.querySelectorAll(".project")];
-const filters = document.querySelector(".filters");
-const results = document.querySelector("#resultados");
-const dialog = document.querySelector("#project-dialog");
-let activeProject;
+const pages = [...document.querySelectorAll("[data-page]")];
+const categories = {
+  proyectos: { title: "Proyectos", description: "Aplicaciones, laboratorios de ciberseguridad y experiencias en el sector público y universitario.", filter: "todos" },
+  ciberseguridad: { title: "Ciberseguridad", description: "Laboratorios de la maestría para explorar la protección de datos y documentar su implementación.", filter: "seguridad" },
+  "paginas-web": { title: "Páginas web y aplicaciones", description: "Diseño de aplicaciones, administración web y gestión de plataformas digitales. Aquí puedes conocer mi aporte a cada proyecto.", filter: "web" },
+  "comunicacion-digital": { title: "Comunicación digital", description: "Experiencias de gestión de contenidos, producción audiovisual y difusión de información institucional.", filter: "comunicacion" }
+};
 
-filters.hidden = false;
-filters.addEventListener("click", (event) => {
-  const selected = event.target.closest("[data-filter]");
-  if (!selected) return;
-
-  const category = selected.dataset.filter;
-  for (const filter of filters.querySelectorAll("[data-filter]")) {
-    filter.setAttribute("aria-pressed", String(filter === selected));
+function showPage() {
+  const route = location.hash.slice(1) || "inicio";
+  if (route === "contenido") {
+    document.querySelector("main").focus();
+    return;
   }
-  let count = 0;
-  for (const project of projects) {
-    const categories = project.dataset.categories.split(" ");
-    project.hidden = category !== "todos" && !categories.includes(category);
-    if (!project.hidden) count += 1;
+  let pageName = route;
+  let title = "Ingeniería con propósito";
+  const category = categories[route];
+  if (category) {
+    pageName = "proyectos";
+    title = category.title;
+    document.querySelector("#project-title").textContent = title;
+    document.querySelector(".section-heading > p").textContent = category.description;
+    for (const project of projects) {
+      project.hidden = category.filter !== "todos" && !project.dataset.categories.split(" ").includes(category.filter);
+    }
+    for (const link of document.querySelectorAll("[data-filter]")) {
+      link.toggleAttribute("data-active", link.dataset.filter === category.filter);
+      if (link.dataset.filter === category.filter) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    }
+  } else if (route.startsWith("proyecto/")) {
+    const slug = route.slice("proyecto/".length);
+    const project = projects.find(item => item.querySelector("[data-project]").dataset.project === slug);
+    pageName = project ? "detalle" : "no-encontrada";
+    if (project) {
+      title = project.querySelector("h3").textContent;
+      document.querySelector("#detail-title").textContent = title;
+      document.querySelector("#detail-category").textContent = project.querySelector(".eyebrow").textContent;
+      document.querySelector("#detail-summary").textContent = project.querySelector(".card-content p").textContent;
+      document.querySelector("#detail-body").replaceChildren(project.querySelector("template").content.cloneNode(true));
+      const visual = project.querySelector("img, .task-illustration").cloneNode(true);
+      document.querySelector("#detail-visual").replaceChildren(visual);
+    }
   }
-  results.textContent = count === 1 ? "1 proyecto visible" : `${count} proyectos visibles`;
-});
-
-for (const project of projects) {
-  const button = project.querySelector("button");
-  button.disabled = false;
-  button.addEventListener("click", () => {
-    activeProject = button;
-    dialog.querySelector("#detail-title").textContent = project.querySelector("h3").textContent;
-    dialog.querySelector("#detail-category").textContent = project.querySelector(".eyebrow").textContent;
-    dialog.querySelector("#detail-body").replaceChildren(project.querySelector("template").content.cloneNode(true));
-    dialog.showModal();
-  });
+  if (!pages.some(page => page.dataset.page === pageName)) pageName = "no-encontrada";
+  for (const page of pages) page.hidden = page.dataset.page !== pageName;
+  const activePage = pages.find(page => !page.hidden);
+  const heading = activePage.querySelector("h1");
+  title = heading.textContent.trim();
+  document.title = title + " · Ronal Estudio";
+  for (const link of document.querySelectorAll(".site-header a")) {
+    const target = link.hash.slice(1);
+    const current = target === pageName || (target === "proyectos" && pageName === "detalle");
+    if (current) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+  heading.tabIndex = -1;
+  heading.focus({ preventScroll: true });
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
 
-dialog.addEventListener("click", (event) => {
-  if (event.target !== dialog) return;
-  const bounds = dialog.getBoundingClientRect();
-  const clickedOutside =
-    event.clientX < bounds.left || event.clientX > bounds.right ||
-    event.clientY < bounds.top || event.clientY > bounds.bottom;
-  if (clickedOutside) dialog.close();
-});
-dialog.addEventListener("close", () => activeProject?.focus());
+window.addEventListener("hashchange", showPage);
+showPage();
 
 const music = document.querySelector(".music");
 const musicToggle = music.querySelector(".music-toggle");
@@ -78,7 +97,7 @@ music.addEventListener("keydown", (event) => {
 });
 
 const glassButtons = document.querySelectorAll(
-  ".button, .filters button, .music-toggle, .icon-button, .project-button"
+  ".button, .filters a, .music-toggle, .icon-button, .project-button"
 );
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
