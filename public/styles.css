@@ -346,3 +346,15 @@ h1[tabindex="-1"]:focus { outline: none; }
 .report-download { text-align: center; margin-top: 30px; }
 .report-download .button { color: #132c24; max-width: 100%; }
 .download-status:empty { display: none; }
+
+/* Center each row, including the two remaining cards after filtering. */
+.cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.cards > .project { flex: 0 0 calc((100% - 32px) / 3); min-width: 0; }
+.cards > .project-featured { flex-basis: 100%; }
+@media (max-width: 900px) {
+  .cards > .project { flex-basis: calc((100% - 16px) / 2); }
+  .cards > .project-featured { flex-basis: 100%; }
+}
+@media (max-width: 650px) {
+  .cards > .project { flex-basis: 100%; }
+}
