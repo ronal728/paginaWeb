@@ -134,3 +134,27 @@ for (const control of glassButtons) {
   control.addEventListener("pointerleave", resetReflection);
   control.addEventListener("pointercancel", resetReflection);
 }
+
+// Download the report without leaving the project, including HTMLPreview.
+document.addEventListener("click", async (event) => {
+  const link = event.target.closest(".report-download-link");
+  if (!link || link.href.startsWith("data:") || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  if (link.getAttribute("aria-busy") === "true") return;
+  const status = link.parentElement.querySelector(".download-status");
+  link.setAttribute("aria-busy", "true");
+  status.textContent = "Preparando descarga…";
+  try {
+    const response = await fetch(link.href);
+    if (!response.ok) throw new Error("Download failed");
+    const blob = await response.blob();
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url; anchor.download = link.download;
+    document.body.append(anchor); anchor.click(); anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+    status.textContent = "Descarga iniciada.";
+  } catch {
+    status.textContent = "No se pudo descargar el informe. Inténtalo de nuevo.";
+  } finally { link.removeAttribute("aria-busy"); }
+});

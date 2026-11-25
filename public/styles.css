@@ -342,3 +342,7 @@ h1[tabindex="-1"]:focus { outline: none; }
 #detail-title { max-width: 20ch; text-wrap: balance; }
 #detail-summary { max-width: 62ch; }
 .project-link.button { color: #132c24; text-decoration: none; gap: 14px; padding: 14px 22px; margin-top: 16px; }
+
+.report-download { text-align: center; margin-top: 30px; }
+.report-download .button { color: #132c24; max-width: 100%; }
+.download-status:empty { display: none; }
