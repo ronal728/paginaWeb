@@ -77,12 +77,12 @@ const player = music.querySelector("#player");
 
 function setMusicOpen(open) {
   if (open && !player.firstElementChild) {
-    const playlist = music.querySelector(".spotify-link").href;
-    const source = new URL(playlist);
-    source.pathname = `/embed${source.pathname}`;
+    const artistUrl = music.querySelector(".spotify-link").href;
+    const source = new URL(artistUrl);
+    source.pathname = `/embed${source.pathname.replace(/^\/intl-[^/]+/, "")}`;
     const frame = document.createElement("iframe");
     frame.src = source.href;
-    frame.title = "Spotify · lista lofi beats";
+    frame.title = "Spotify · Bad Bunny";
     frame.height = "152";
     frame.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
     frame.referrerPolicy = "strict-origin-when-cross-origin";

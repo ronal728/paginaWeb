@@ -358,3 +358,5 @@ h1[tabindex="-1"]:focus { outline: none; }
 @media (max-width: 650px) {
   .cards > .project { flex-basis: 100%; }
 }
+
+.spotify-link.button { color: #132c24; display: flex; width: 100%; justify-content: center; margin-top: 14px; text-decoration: none; }
