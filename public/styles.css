@@ -298,3 +298,15 @@ h1[tabindex="-1"]:focus { outline: none; }
   h1 { font-size: clamp(2.65rem, 10vw, 4.3rem); }
   .card-content h3 { font-size: 2rem; }
 }
+
+/* Restore the original home typography and center the hero. */
+.hero { font-family: "Aptos", "Helvetica Neue", Arial, sans-serif; }
+.hero-layout { justify-content: center; text-align: center; }
+.hero-copy { width: 100%; margin-inline: auto; }
+.hero h1 { font: 600 clamp(4rem, 8.45vw, 9rem)/.92 Georgia, serif; letter-spacing: -.078em; }
+.hero h1 em { font-weight: 400; font-style: italic; }
+.hero-lede { margin-inline: auto; }
+.hero-location { right: auto; left: 50%; transform: translateX(-50%); width: max-content; max-width: 100%; }
+@media (max-width: 650px) {
+  .hero h1 { font-size: clamp(3.55rem, 12.2vw, 5.4rem); }
+}
