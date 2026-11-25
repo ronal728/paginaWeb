@@ -284,3 +284,9 @@ h1[tabindex="-1"]:focus { outline: none; }
 .contact-links .button { max-width: 100%; }
 
 .contact-icon { width: 26px; height: 26px; flex-shrink: 0; vertical-align: middle; }
+
+/* Equal contact actions and aligned icons on all screen sizes. */
+.contact-links { width: min(100%, 340px); flex-shrink: 0; justify-items: stretch; }
+.contact-links .button { width: 100%; min-height: 58px; justify-content: space-between; gap: 14px; box-sizing: border-box; }
+.contact-links .contact-icon { width: 26px; height: 26px; flex: 0 0 26px; }
+.timeline dd + dd { margin-top: 12px; line-height: 1.65; }
