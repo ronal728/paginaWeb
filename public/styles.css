@@ -360,3 +360,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 }
 
 .spotify-link.button { color: #132c24; display: flex; width: 100%; justify-content: center; margin-top: 14px; text-decoration: none; }
+
+/* Center the content and actions inside project cards. */
+.cards .card-content { text-align: center; }
+.cards .card-content h3, .cards .card-content p { margin-inline: auto; }
+.cards .card-arrow { margin-inline: auto; }
