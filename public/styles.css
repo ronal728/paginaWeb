@@ -331,3 +331,8 @@ h1[tabindex="-1"]:focus { outline: none; }
 @media (max-width: 360px) {
   .nav .nav-arrow { display: none; }
 }
+
+/* Center project headings and category navigation. */
+#proyectos .section-heading { text-align: center; }
+#proyectos .section-heading > p { margin-inline: auto; }
+#proyectos .filters { justify-content: center; }
